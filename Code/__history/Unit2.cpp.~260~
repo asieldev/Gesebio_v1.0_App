@@ -1,0 +1,99 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#include <string.h>
+ #include <math.h>
+#include "Unit2.h"
+
+#pragma hdrstop
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+
+TForm2 *Form2;
+
+//---------------------------------------------------------------------------
+__fastcall TForm2::TForm2(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+
+void __fastcall TForm2::SpeedButton3Click(TObject *Sender)
+{ delete A;
+  delete Form1->V_BIN;
+
+exit(1);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::SpeedButton2Click(TObject *Sender)
+{
+if(OpenDialog1->Execute())
+
+ListBox1->Items->LoadFromFile(OpenDialog1->FileName);
+HZ= StrToInt(ListBox1->Items->Strings[0]);
+TS= StrToFloat(ListBox1->Items->Strings[1]);
+Total= StrToInt(ListBox1->Items->Strings[2]);
+Form1->ListBox1->Items=ListBox1->Items;
+A = new double[Total];
+
+if (ListBox1->Items!=0)
+{
+ Form2->Hide();
+Form1->SetFocus();
+Form1->Series1->Clear();
+Form1->Chart1->AxesList->Bottom->Automatic=true;
+ Form1->Chart1->AxesList->Left->Automatic=true;
+
+for(int k=0;k<Total-1;k++)
+{
+
+A[k]= StrToFloat(ListBox1->Items->Strings[k+3]);
+Form1->Series1->AddXY(k*TS,A[k]);
+
+
+ Form1->ProgressBar1->Max=Total;
+ Form1->ProgressBar1->Visible=True;
+ Form1->ProgressBar1->Position++;
+
+   Form1->Edit1->Text =String(Form1->ProgressBar1->Position) + " de " + String(Total)+ " PUNTOS";
+   Application->ProcessMessages();
+
+
+}
+
+Sleep(2);
+Form1->ProgressBar1->Position=0;
+Form1->Edit1->Text=  "Completada...";
+Form1->ProgressBar1->Visible=False;
+Form1->Enabled=True;
+}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::FormActivate(TObject *Sender)
+{
+ListBox1->Visible=False;
+Form1->WindowState=wsMaximized;
+}
+//---------------------------------------------------------------------------
+
+
+
+void __fastcall TForm2::FormClose(TObject *Sender, TCloseAction &Action)
+{
+exit(1);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm2::SpeedButton1Click(TObject *Sender)
+{
+Form1->Enabled=True;
+Form2->Hide();
+Form1->SetFocus();
+
+}
+//---------------------------------------------------------------------------
+
+
+

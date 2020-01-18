@@ -1,0 +1,215 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+#include <mmsystem.h>
+#include "Unit12.h"
+#include "Unit1.h"
+#include "Unit6.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma link "Chart"
+#pragma link "Series"
+#pragma link "TeEngine"
+#pragma link "TeeProcs"
+#pragma resource "*.dfm"
+TForm12 *Form12;
+//int o=0;
+
+WAVEFORMATEX wf;
+
+HWAVEIN hWaveIn;
+
+
+
+void InitWaveFormat();
+void InitWaveHdr();
+void CALLBACK waveInProc( HWAVEIN hwi, UINT uMsg, DWORD dwInstance, DWORD dwParam1, DWORD dwParam2 );
+
+
+
+
+//---------------------------------------------------------------------------
+__fastcall TForm12::TForm12(TComponent* Owner)
+	: TForm(Owner)
+{
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm12::InitWaveFormat()
+
+{
+
+   wf.wFormatTag = WAVE_FORMAT_PCM;
+   wf.nChannels = 1;
+	wf.nBlockAlign = 1;
+   wf.nSamplesPerSec = nSamplesRate;
+   wf.nAvgBytesPerSec = nSamplesRate;
+
+   wf.wBitsPerSample = 8;
+   wf.cbSize=0;
+
+}
+
+//---------------------------------------------------------------------------
+ void __fastcall TForm12::InitWaveHdr()
+
+{
+
+	 int k;
+   for (k=0;k<NUM_BUFFERS;k++)
+   {
+
+	  WaveHdrIn[k].lpData=BufferWaveIn+k*BUFFER_SIZE;
+	  WaveHdrIn[k].dwBufferLength=BUFFER_SIZE;
+      WaveHdrIn[k].dwFlags=0;
+      waveInPrepareHeader(hWaveIn, &WaveHdrIn[k],sizeof(WAVEHDR));
+   }
+
+
+}
+
+
+void __fastcall TForm12::Button1Click(TObject *Sender)
+{
+this->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm12::FormActivate(TObject *Sender)
+{
+Label1->Caption="Freacuencia(Muestreo): ";
+Label3->Caption="Muestras a leer: ";
+Label1->Caption="  "+Label1->Caption+Form1->Frm_TSonido+" (Hz)";
+Label3->Caption="  "+ Label3->Caption+Form1->N_Buffer;
+
+BUFFER_SIZE =Form1->N_Buffer;
+nSamplesRate =Form1->Frm_TSonido;
+temp=StrToInt(Edit2->Text);
+Timer1->Interval=temp;
+
+
+NUM_BUFFERS= 2;
+
+ WaveHdrIn=new WAVEHDR [NUM_BUFFERS];
+
+ BufferWaveIn=new unsigned char [NUM_BUFFERS*BUFFER_SIZE];
+
+ Buffer=new  unsigned char [BUFFER_SIZE];
+
+  for(int k=0;k<BUFFER_SIZE;k++)
+   Buffer[k]=0;
+
+InitWaveFormat();
+
+   waveInOpen(  (LPHWAVEIN)&hWaveIn, WAVE_MAPPER, &wf,(DWORD)waveInProc, 0L, CALLBACK_FUNCTION  );
+
+   InitWaveHdr();
+
+   for (int k=0;k<NUM_BUFFERS;k++)
+
+	  waveInAddBuffer(hWaveIn,&WaveHdrIn[k],sizeof(WAVEHDR));
+
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm12::SpeedButton2Click(TObject *Sender)
+{
+waveInStart(hWaveIn);
+Timer1->Enabled=true;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm12::SpeedButton3Click(TObject *Sender)
+{
+  waveInStop(hWaveIn);
+  Timer1->Enabled=false;
+}
+//---------------------------------------------------------------------------
+
+void CALLBACK waveInProc( HWAVEIN hwi,UINT uMsg,DWORD dwInstance,DWORD 				    dwParam1,DWORD dwParam2 )
+{   unsigned char *p=Form12->Buffer;
+
+
+   LPWAVEHDR lpWvHdrIn=(LPWAVEHDR)dwParam1;
+   switch(uMsg)
+   {
+	  case WIM_DATA:
+				CopyMemory(p,lpWvHdrIn->lpData,Form12->BUFFER_SIZE);
+                waveInAddBuffer(hWaveIn,lpWvHdrIn,sizeof(WAVEHDR));
+				PostMessage(Form12->Handle,WM_PAINT,0,0);
+                break;
+   }
+}
+
+void __fastcall TForm12::FormPaint(TObject *Sender)
+{
+//ShowMessage("Buffer lleno. En el próximo ciclo se sobreescribirá nueva información");
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm12::SpeedButton5Click(TObject *Sender)
+{
+try{
+temp=StrToInt(Edit2->Text);
+Timer1->Enabled=false;
+Timer1->Interval=temp;
+}catch(Exception &exception )
+ {ShowMessage("Gesebio ha detectado un problema con los parámetros de entrada. Por favor verifique el contenido de los mismos y vuelva a intentarlo.");}
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm12::Timer1Timer(TObject *Sender)
+{
+Series1->Clear();
+  //unsigned int y;
+ /* PaintBox1->Canvas->Brush->Color = clWhite;
+   PaintBox1->Canvas->Rectangle(0, 0, PaintBox1->Width, PaintBox1->Height);
+   PaintBox1->Canvas->MoveTo(0,127);  */
+
+   for (int x=0;x<BUFFER_SIZE;x++)
+   { //o++;
+	  //y=Buffer[x];
+	 // PaintBox1->Canvas->LineTo(x,y);
+
+	Series1->AddXY((double)x/Form1->Frm_TSonido,Buffer[x]);
+   }
+  //	waveInStop(hWaveIn);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm12::SpeedButton6Click(TObject *Sender)
+{
+Series1->Clear();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm12::SpeedButton4Click(TObject *Sender)
+{
+
+
+ waveInStop(hWaveIn);
+Timer1->Enabled=false;
+for(int o=0;o<Series1->Count();o++)
+{
+Form1->Series1->AddXY(Series1->XValue[o],Series1->YValue[o]);
+}
+Form1->Frm=(double)1/Form1->Frm_TSonido;
+ Form1->AjustaChart(Form1->Series1->MinYValue(),Form1->Series1->MaxYValue(),Form1->Series1->MinXValue(),Form1->Series1->MaxXValue());
+
+ Form1->OldXs=Form1->Series1->MaxXValue();
+  Form1->OldYs=Form1->Series1->YValue[Form1->Series1->LastValueIndex];
+
+ this->Close();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm12::SpeedButton1Click(TObject *Sender)
+{
+Form6->Show();
+}
+//---------------------------------------------------------------------------
+

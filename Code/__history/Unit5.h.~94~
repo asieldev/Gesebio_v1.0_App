@@ -1,0 +1,200 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit5H
+#define Unit5H
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include <ExtCtrls.hpp>
+#include <pngimage.hpp>
+#include <Buttons.hpp>
+#include <ComCtrls.hpp>
+#include <Graphics.hpp>
+//---------------------------------------------------------------------------
+class TForm5 : public TForm
+{
+__published:	// IDE-managed Components
+	TImage *Image1;
+	TSpeedButton *SpeedButton1;
+	TLabel *Label12;
+	TBevel *Bevel1;
+	TPageControl *PageControl2;
+	TTabSheet *TabSheet7;
+	TTabSheet *TabSheet8;
+	TPageControl *PageControl1;
+	TTabSheet *TabSheet1;
+	TSpeedButton *SpeedButton2;
+	TGroupBox *GroupBox1;
+	TLabel *Label1;
+	TLabel *Label3;
+	TLabel *Label4;
+	TLabel *Label5;
+	TLabel *Label6;
+	TLabel *Label7;
+	TLabel *Label46;
+	TEdit *Edit1;
+	TEdit *Edit2;
+	TEdit *Edit3;
+	TEdit *Edit4;
+	TGroupBox *GroupBox2;
+	TImage *Image3;
+	TPageControl *PageControl3;
+	TTabSheet *TabSheet11;
+	TTabSheet *TabSheet12;
+	TTabSheet *TabSheet13;
+	TTabSheet *TabSheet14;
+	TGroupBox *GroupBox5;
+	TImage *Image5;
+	TGroupBox *GroupBox8;
+	TLabel *Label31;
+	TLabel *Label32;
+	TLabel *Label33;
+	TLabel *Label34;
+	TLabel *Label35;
+	TLabel *Label36;
+	TLabel *Label37;
+	TEdit *Edit5;
+	TEdit *Edit6;
+	TEdit *Edit7;
+	TEdit *Edit8;
+	TSpeedButton *SpeedButton4;
+	TSpeedButton *SpeedButton5;
+	TSpeedButton *SpeedButton6;
+	TSpeedButton *SpeedButton7;
+	TTabSheet *TabSheet3;
+	TGroupBox *GroupBox4;
+	TLabel *Label20;
+	TLabel *Label21;
+	TLabel *Label22;
+	TLabel *Label23;
+	TLabel *Label24;
+	TLabel *Label25;
+	TLabel *Label26;
+	TLabel *Label45;
+	TEdit *Edit9;
+	TEdit *Edit10;
+	TEdit *Edit11;
+	TEdit *Edit12;
+	TSpeedButton *SpeedButton3;
+	TGroupBox *GroupBox7;
+	TLabel *Label42;
+	TLabel *Label43;
+	TLabel *Label44;
+	TLabel *Label69;
+	TEdit *Edit25;
+	TLabel *Label70;
+	TImage *Image2;
+	TLabel *Label41;
+	TLabel *Label71;
+	TGroupBox *GroupBox11;
+	TImage *Image7;
+	TGroupBox *GroupBox6;
+	TImage *Image6;
+	TGroupBox *GroupBox3;
+	TImage *Image4;
+	TLabel *Label2;
+	TEdit *Edit26;
+	TLabel *Label8;
+	TLabel *Label9;
+	TTabSheet *TabSheet2;
+	TGroupBox *GroupBox13;
+	TLabel *Label10;
+	TLabel *Label11;
+	TLabel *Label13;
+	TLabel *Label14;
+	TLabel *Label15;
+	TLabel *Label16;
+	TLabel *Label17;
+	TEdit *Edit27;
+	TEdit *Edit28;
+	TEdit *Edit29;
+	TEdit *Edit30;
+	TGroupBox *GroupBox14;
+	TImage *Image8;
+	TSpeedButton *SpeedButton8;
+	TGroupBox *GroupBox12;
+	TLabel *Label18;
+	TLabel *Label19;
+	TLabel *Label27;
+	TLabel *Label28;
+	TLabel *Label29;
+	TLabel *Label30;
+	TLabel *Label58;
+	TLabel *Label59;
+	TLabel *Label60;
+	TLabel *Label61;
+	TEdit *Edit21;
+	TEdit *Edit22;
+	TEdit *Edit23;
+	TEdit *Edit24;
+	TEdit *Edit31;
+	TRadioGroup *RadioGroup1;
+	TGroupBox *GroupBox10;
+	TLabel *Label51;
+	TLabel *Label53;
+	TLabel *Label54;
+	TLabel *Label55;
+	TLabel *Label56;
+	TLabel *Label57;
+	TLabel *Label62;
+	TLabel *Label64;
+	TEdit *Edit17;
+	TEdit *Edit19;
+	TEdit *Edit20;
+	TEdit *Edit32;
+	TRadioGroup *RadioGroup2;
+	TGroupBox *GroupBox9;
+	TLabel *Label40;
+	TLabel *Label47;
+	TLabel *Label48;
+	TLabel *Label49;
+	TLabel *Label50;
+	TLabel *Label52;
+	TEdit *Edit15;
+	TEdit *Edit16;
+	TEdit *Edit18;
+	TLabel *Label38;
+	TLabel *Label39;
+	TEdit *Edit34;
+	TEdit *Edit14;
+	TEdit *Edit13;
+	TEdit *Edit33;
+	TLabel *Label65;
+	TLabel *Label63;
+	TGroupBox *GroupBox15;
+	TCheckBox *CheckBox1;
+	TEdit *Edit35;
+	TEdit *Edit36;
+	TGroupBox *GroupBox16;
+	TCheckBox *CheckBox2;
+	TEdit *Edit37;
+	TEdit *Edit38;
+	TImage *Image9;
+	void __fastcall SpeedButton2Click(TObject *Sender);
+	void __fastcall SpeedButton1Click(TObject *Sender);
+	void __fastcall SpeedButton3Click(TObject *Sender);
+	void __fastcall SpeedButton7Click(TObject *Sender);
+	void __fastcall SpeedButton5Click(TObject *Sender);
+	void __fastcall SpeedButton6Click(TObject *Sender);
+	void __fastcall SpeedButton4Click(TObject *Sender);
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall CheckBox2Click(TObject *Sender);
+	void __fastcall SpeedButton8Click(TObject *Sender);
+	void __fastcall CheckBox1Click(TObject *Sender);
+
+private:	// User declarations
+public:		// User declarations
+	__fastcall TForm5(TComponent* Owner);
+	 double *Data;
+	 bool HRV;
+	void __fastcall Triangular(float Amp,float offset,float t_s, float t_b,float rep);
+	void __fastcall Cuadrada(float Amp,float offset,float frec, float dutycicle,float rep) ;
+	void __fastcall Diente_Sierra(float Amp,float offset,float time, float rep);
+	void __fastcall Trapezoidal(float Amp,float offset,float t_s, float t_b,float t_ON,float t_OFF,float rep);
+	};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm5 *Form5;
+//---------------------------------------------------------------------------
+#endif

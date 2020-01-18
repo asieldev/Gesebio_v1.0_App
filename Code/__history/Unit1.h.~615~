@@ -1,0 +1,688 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit1H
+#define Unit1H
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include "Unit2.h"
+#include "Unit13.h"
+#include <Forms.hpp>
+#include <ActnCtrls.hpp>
+#include <ActnList.hpp>
+#include <ActnMan.hpp>
+#include <ActnMenus.hpp>
+#include <ExtActns.hpp>
+#include <Ribbon.hpp>
+#include <RibbonActnMenus.hpp>
+#include <RibbonLunaStyleActnCtrls.hpp>
+#include <RibbonObsidianStyleActnCtrls.hpp>
+#include <StdActns.hpp>
+#include <ToolWin.hpp>
+#include <ImgList.hpp>
+#include <RibbonSilverStyleActnCtrls.hpp>
+#include <Graphics.hpp>
+#include <ScreenTips.hpp>
+#include "Chart.hpp"
+#include "Series.hpp"
+#include "TeeFunci.hpp"
+#include "TeEngine.hpp"
+#include "TeeProcs.hpp"
+#include <ExtCtrls.hpp>
+#include <ComCtrls.hpp>
+#include <Keyboard.hpp>
+#include <DockTabSet.hpp>
+#include <Tabs.hpp>
+#include <Menus.hpp>
+#include <Buttons.hpp>
+#include <RibbonActnCtrls.hpp>
+#include <Dialogs.hpp>
+#include <ButtonGroup.hpp>
+#include <pngimage.hpp>
+#include <GestureCtrls.hpp>
+#include <Grids.hpp>
+#include <ValEdit.hpp>
+#include <CategoryButtons.hpp>
+#include <CheckLst.hpp>
+#include "BubbleCh.hpp"
+#include <FileCtrl.hpp>
+#include <Outline.hpp>
+#include <MPlayer.hpp>
+#include "TeCanvas.hpp"
+
+//---------------------------------------------------------------------------
+
+typedef struct Signal
+{
+float frec_muest;
+float *Value;
+int NValue;
+int x0;
+int xN;
+int y0;
+int yN;
+
+}SGN;
+
+class TForm1 : public TForm
+{
+__published:	// IDE-managed Components
+
+	TRibbon *Ribbon1;
+	TActionManager *ActionManager1;
+	TEditCut *EditCut1;
+	TEditCopy *EditCopy1;
+	TEditPaste *EditPaste1;
+	TEditSelectAll *EditSelectAll1;
+	TEditUndo *EditUndo1;
+	TEditDelete *EditDelete1;
+	TRichEditBold *RichEditBold1;
+	TRichEditItalic *RichEditItalic1;
+	TRichEditUnderline *RichEditUnderline1;
+	TRichEditStrikeOut *RichEditStrikeOut1;
+	TRichEditBullets *RichEditBullets1;
+	TRichEditAlignLeft *RichEditAlignLeft1;
+	TRichEditAlignRight *RichEditAlignRight1;
+	TRichEditAlignCenter *RichEditAlignCenter1;
+	THelpContents *HelpContents1;
+	THelpTopicSearch *HelpTopicSearch1;
+	THelpOnHelp *HelpOnHelp1;
+	THelpContextAction *HelpContextAction1;
+	TWindowClose *WindowClose1;
+	TWindowCascade *WindowCascade1;
+	TWindowTileHorizontal *WindowTileHorizontal1;
+	TWindowTileVertical *WindowTileVertical1;
+	TWindowMinimizeAll *WindowMinimizeAll1;
+	TWindowArrange *WindowArrange1;
+	TFileOpen *FileOpen1;
+	TFileOpenWith *FileOpenWith1;
+	TFileSaveAs *FileSaveAs1;
+	TFilePrintSetup *FilePrintSetup1;
+	TFilePageSetup *FilePageSetup1;
+	TRibbonPage *RibbonPage1;
+	TRibbonGroup *RibbonGroup1;
+	TImageList *Image16;
+	TImageList *Image32;
+	TRibbonQuickAccessToolbar *RibbonQuickAccessToolbar1;
+	TRibbonPage *RibbonPage2;
+	TAction *Action1;
+	TAction *Action2;
+	TWindowClose *WindowClose2;
+	TImageList *ImageList1;
+	TAction *Action3;
+	TAction *Action4;
+	TRibbonApplicationMenuBar *RibbonApplicationMenuBar1;
+	TAction *Action5;
+	TAction *Action6;
+	TRibbonGroup *RibbonGroup2;
+	TRibbonGroup *RibbonGroup3;
+	TRibbonGroup *RibbonGroup4;
+	TAction *Action7;
+	TRibbonPage *RibbonPage5;
+	TSpeedButton *SpeedButton1;
+	TSpeedButton *SpeedButton2;
+	TLabel *Label9;
+	TAction *Action8;
+	TAction *Action9;
+	TAction *Action10;
+	TAction *Action11;
+	TAction *Action12;
+	TAction *Action13;
+	TAction *Action14;
+	TAction *Action15;
+	TAction *Action16;
+	TAction *Action17;
+	TAction *Action18;
+	TCategoryPanelGroup *CategoryPanelGroup1;
+	TCategoryPanel *CategoryPanel1;
+	TCategoryPanel *CategoryPanel2;
+	TPageControl *PageControl1;
+	TTabSheet *TabSheet2;
+	TGroupBox *GroupBox3;
+	TLabel *Label3;
+	TLabel *Label4;
+	TSpeedButton *SpeedButton11;
+	TLabel *Label5;
+	TComboBox *ComboBox2;
+	TComboBox *ComboBox3;
+	TListBox *ListBox3;
+	TLabel *Label6;
+	TImage *Image1;
+	TSpeedButton *SpeedButton20;
+	TAction *Action19;
+	TAction *Action20;
+	TAction *Action21;
+	TAction *Action22;
+	TAction *Action23;
+	TAction *Action24;
+	TCategoryPanel *CategoryPanel6;
+	TAction *Action25;
+	TPanel *Panel5;
+	TLabel *Label17;
+	TGroupBox *GroupBox6;
+	TLabel *Label7;
+	TPageControl *PageControl2;
+	TTabSheet *TabSheet3;
+	TChart *Chart1;
+	TLineSeries *Series2;
+	TPageControl *PageControl3;
+	TTabSheet *TabSheet6;
+	TScrollBox *ScrollBox1;
+	TImage *Image2;
+	TLabel *Label15;
+	TLabel *Label12;
+	TLabel *Label13;
+	TLabel *Label14;
+	TSpeedButton *SpeedButton17;
+	TSpeedButton *SpeedButton18;
+	TSpeedButton *SpeedButton19;
+	TLabel *Label21;
+	TAction *Action26;
+	TAction *Action27;
+	TAction *Action28;
+	TAction *Action29;
+	TAction *Action30;
+	TAction *Action31;
+	TAction *Action32;
+	TAction *Action33;
+	TAction *Action34;
+	TAction *Action35;
+	TAction *Action36;
+	TAction *Action37;
+	TAction *Action38;
+	TAction *Action39;
+	TAction *Action40;
+	TAction *Action41;
+	TAction *Action42;
+	TAction *Action43;
+	TAction *Action44;
+	TAction *Action45;
+	TAction *Action46;
+	TAction *Action47;
+	TAction *Action48;
+	TAction *Action49;
+	TAction *Action50;
+	TRibbonSpinEdit *NP;
+	TAction *Action51;
+	TAction *Action52;
+	TScreenTipsManager *ScreenTipsManager1;
+	TAction *Action53;
+	TAction *Action54;
+	TAction *Action55;
+	TRibbonGroup *RibbonGroup7;
+	TAction *Action56;
+	TAction *Action57;
+	TImageList *ImageList2;
+	TAction *Action58;
+	TAction *Action59;
+	TAction *Action60;
+	TAction *Action61;
+	TAction *Action62;
+	TAction *Action63;
+	TAction *Action64;
+	TAction *Action65;
+	TAction *Action66;
+	TAction *Action67;
+	TRibbonGroup *RibbonGroup8;
+	TAction *Action68;
+	TAction *Action69;
+	TAction *Action70;
+	TAction *Action71;
+	TAction *Action72;
+	TAction *Action73;
+	TAction *Action74;
+	TAction *Action75;
+	TAction *Action76;
+	TAction *Action77;
+	TAction *Action78;
+	TAction *Action79;
+	TAction *Action80;
+	TAction *Action81;
+	TAction *Action82;
+	TAction *Action83;
+	TAction *Action84;
+	TAction *Action85;
+	TAction *Action86;
+	TAction *Action87;
+	TAction *Action88;
+	TAction *Action89;
+	TAction *Action90;
+	TAction *Action91;
+	TSaveDialog *SaveDialog1;
+	TOpenDialog *OpenDialog1;
+	TLabel *Label18;
+	TLineSeries *Series1;
+	TLineSeries *Series5;
+	TAction *Action92;
+	TPanel *Panel1;
+	TLabel *Label19;
+	TGroupBox *GroupBox2;
+	TLabel *Label20;
+	TLabel *Label23;
+	TLineSeries *Series4;
+	TSaveDialog *SaveDialog2;
+	TAction *Action93;
+	TAction *Action94;
+	TAction *Action95;
+	TAction *Action96;
+	TAction *Action97;
+	TAction *Action98;
+	TOpenDialog *OpenDialog2;
+	TAction *Action99;
+	TSpeedButton *SpeedButton22;
+	TLineSeries *Series6;
+	TOutline *Outline1;
+	TOpenDialog *OpenDialog3;
+	TLineSeries *Series7;
+	TLineSeries *Series8;
+	TSpeedButton *SpeedButton23;
+	TOpenDialog *OpenDialog4;
+	TOpenDialog *OpenDialog5;
+	TSaveDialog *SaveDialog3;
+	TRibbonGroup *RibbonGroup5;
+	TAction *Action100;
+	TSpeedButton *SpeedButton24;
+	TAction *Action101;
+	TAction *Action102;
+	TRibbonGroup *RibbonGroup6;
+	TAction *Action103;
+	TImageList *ImageList3;
+	TPanel *Panel3;
+	TLabel *Label2;
+	TSpeedButton *SpeedButton8;
+	TSpeedButton *SpeedButton7;
+	TSpeedButton *SpeedButton9;
+	TSpeedButton *SpeedButton10;
+	TSpeedButton *SpeedButton12;
+	TSpeedButton *SpeedButton13;
+	TSpeedButton *SpeedButton21;
+	TPanel *Panel6;
+	TLabel *Label22;
+	TSpeedButton *SpeedButton16;
+	TSpeedButton *SpeedButton4;
+	TPanel *Panel2;
+	TLabel *Label1;
+	TSpeedButton *SpeedButton6;
+	TSpeedButton *SpeedButton5;
+	TSpeedButton *SpeedButton14;
+	TSpeedButton *SpeedButton15;
+	TSpeedButton *SpeedButton3;
+	TAction *Action104;
+	TAction *Action105;
+	TAction *Action106;
+	TRibbonGroup *RibbonGroup9;
+	TStatusBar *StatusBar1;
+	TAction *Action107;
+	TAction *Action108;
+	TRibbonComboBox *RibbonComboBox1;
+	TAction *Action109;
+	TSaveDialog *SaveDialog4;
+	TOpenDialog *OpenDialog6;
+	TListBox *ListBox1;
+	TPopupMenu *PopupMenu1;
+	TMenuItem *Exportarcomotexto1;
+	TAction *Action110;
+	TAction *Action111;
+	TMenuItem *Action1111;
+	TPageControl *PageControl4;
+	TTabSheet *TabSheet1;
+	TChart *Chart2;
+	TLineSeries *Series3;
+	TTabSheet *TabSheet4;
+	TChart *Chart3;
+	TLineSeries *Series9;
+	TTabSheet *TabSheet5;
+	TChart *Chart4;
+	TLineSeries *Series10;
+	TSplitter *Splitter1;
+	TProgressBar *ProgressBar1;
+	TPopupMenu *PopupMenu2;
+	TMenuItem *Exportaratxt1;
+	TPageControl *PageControl5;
+	TTabSheet *TabSheet7;
+	TRichEdit *RichEdit1;
+	TSplitter *Splitter2;
+	TPopupMenu *PopupMenu3;
+	TMenuItem *Guardarcomentario1;
+	TAction *Action112;
+	TAction *Action113;
+	TAction *Action114;
+	TAction *Action115;
+	TAction *Action116;
+	TAction *Action117;
+	TAction *Action118;
+	TAction *Action119;
+	TAction *Action120;
+	TMediaPlayer *MediaPlayer1;
+	TLabel *Label8;
+	TLabel *Label10;
+	TSplitter *Splitter3;
+	TAction *Action121;
+	TSaveDialog *SaveDialog5;
+	TMenuItem *Hex1;
+	TMenuItem *Mostrarendecimal1;
+	TAction *Action122;
+	TAction *Action123;
+	TTimer *Timer1;
+
+	void __fastcall FormCreate(TObject *Sender);
+	void __fastcall Action9Execute(TObject *Sender);
+	void __fastcall Action8Execute(TObject *Sender);
+	void __fastcall Action10Execute(TObject *Sender);
+	void __fastcall Action7Execute(TObject *Sender);
+	void __fastcall Action11Execute(TObject *Sender);
+	void __fastcall Action12Execute(TObject *Sender);
+	void __fastcall Action13Execute(TObject *Sender);
+
+	void __fastcall SpeedButton11Click(TObject *Sender);
+	void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+	void __fastcall Action18Execute(TObject *Sender);
+	void __fastcall SpeedButton17Click(TObject *Sender);
+	void __fastcall SpeedButton18Click(TObject *Sender);
+	void __fastcall SpeedButton19Click(TObject *Sender);
+	void __fastcall Action19Execute(TObject *Sender);
+	void __fastcall Action14Execute(TObject *Sender);
+	void __fastcall Action21Execute(TObject *Sender);
+	void __fastcall Action22Execute(TObject *Sender);
+	void __fastcall Action23Execute(TObject *Sender);
+	void __fastcall Action24Execute(TObject *Sender);
+	void __fastcall CategoryPanelGroup2MouseUp(TObject *Sender, TMouseButton Button,
+          TShiftState Shift, int X, int Y);
+	void __fastcall Label2MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Label1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Label1MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall Label1MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Label2MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall Label2MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Label17MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+
+
+	
+	void __fastcall Chart1MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall Chart1AfterDraw(TObject *Sender);
+
+	void __fastcall SpeedButton3Click(TObject *Sender);
+	void __fastcall Action1Execute(TObject *Sender);
+	void __fastcall BitBtn1Click(TObject *Sender);
+
+
+     void  __fastcall Cal_Mx(double NewXs,double NewYs,double &OldXs,double &OldYs);
+	void __fastcall Chart1MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Chart1MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Chart1Click(TObject *Sender);
+	void __fastcall Label22MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Label22MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall Label22MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Action27Execute(TObject *Sender);
+	void __fastcall Action28Execute(TObject *Sender);
+	void __fastcall Action29Execute(TObject *Sender);
+	void __fastcall Action30Execute(TObject *Sender);
+	void __fastcall Action31Execute(TObject *Sender);
+	void __fastcall Action32Execute(TObject *Sender);
+	void __fastcall Action33Execute(TObject *Sender);
+	void __fastcall Action34Execute(TObject *Sender);
+	void __fastcall Action36Execute(TObject *Sender);
+	void __fastcall Action37Execute(TObject *Sender);
+	void __fastcall Action38Execute(TObject *Sender);
+	void __fastcall Label17MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall Label17MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall SpeedButton12Click(TObject *Sender);
+	void __fastcall SpeedButton13Click(TObject *Sender);
+	void __fastcall SpeedButton7Click(TObject *Sender);
+	void __fastcall SpeedButton9Click(TObject *Sender);
+	void __fastcall SpeedButton10Click(TObject *Sender);
+     void __fastcall ScrollAxis(TChartAxis* Axis, const double Percent);
+	void __fastcall SpeedButton21Click(TObject *Sender);
+	void __fastcall Action39Execute(TObject *Sender);
+	void __fastcall Action40Execute(TObject *Sender);
+	void __fastcall Action41Execute(TObject *Sender);
+	void __fastcall Action42Execute(TObject *Sender);
+	void __fastcall Action43Execute(TObject *Sender);
+	void __fastcall Action44Execute(TObject *Sender);
+	void __fastcall Action45Execute(TObject *Sender);
+	void __fastcall Action46Execute(TObject *Sender);
+	void __fastcall Action47Execute(TObject *Sender);
+	void __fastcall Action6Execute(TObject *Sender);
+	void __fastcall Action50Execute(TObject *Sender);
+	void __fastcall Action51Execute(TObject *Sender);
+	void __fastcall Action52Execute(TObject *Sender);
+	void __fastcall Chart1KeyPress(TObject *Sender, wchar_t &Key);
+	void __fastcall Button1Click(TObject *Sender);
+	void __fastcall Button2Click(TObject *Sender);
+	void __fastcall Action58Execute(TObject *Sender);
+	void __fastcall Action59Execute(TObject *Sender);
+	void __fastcall Action60Execute(TObject *Sender);
+	void __fastcall FormActivate(TObject *Sender);
+	void __fastcall Action62Execute(TObject *Sender);
+	void __fastcall Action63Execute(TObject *Sender);
+	void __fastcall Action64Execute(TObject *Sender);
+	void __fastcall Action67Execute(TObject *Sender);
+	void __fastcall Action65Execute(TObject *Sender);
+	void __fastcall Action66Execute(TObject *Sender);
+	void __fastcall Action68Execute(TObject *Sender);
+	void __fastcall Action69Execute(TObject *Sender);
+	void __fastcall Action70Execute(TObject *Sender);
+	void __fastcall Action71Execute(TObject *Sender);
+	void __fastcall Action72Execute(TObject *Sender);
+	void __fastcall Action73Execute(TObject *Sender);
+	void __fastcall Action74Execute(TObject *Sender);
+	void __fastcall Action75Execute(TObject *Sender);
+	void __fastcall Action76Execute(TObject *Sender);
+	void __fastcall Action77Execute(TObject *Sender);
+	void __fastcall Action78Execute(TObject *Sender);
+	void __fastcall Action79Execute(TObject *Sender);
+	void __fastcall Action80Execute(TObject *Sender);
+	void __fastcall Action81Execute(TObject *Sender);
+	void __fastcall Action82Execute(TObject *Sender);
+	void __fastcall Action84Execute(TObject *Sender);
+	void __fastcall Action85Execute(TObject *Sender);
+	void __fastcall Action87Execute(TObject *Sender);
+	void __fastcall Action86Execute(TObject *Sender);
+	void __fastcall Action88Execute(TObject *Sender);
+	void __fastcall Action89Execute(TObject *Sender);
+	void __fastcall Action90Execute(TObject *Sender);
+	void __fastcall Action91Execute(TObject *Sender);
+	void __fastcall Chart1ClickSeries(TCustomChart *Sender, TChartSeries *Series, int ValueIndex,
+          TMouseButton Button, TShiftState Shift, int X, int Y);
+	void __fastcall Series1Click(TChartSeries *Sender, int ValueIndex, TMouseButton Button,
+          TShiftState Shift, int X, int Y);
+	void __fastcall Series1MouseEnter(TObject *Sender);
+	void __fastcall Series1MouseLeave(TObject *Sender);
+	void __fastcall Action92Execute(TObject *Sender);
+	void __fastcall Label19MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall Label19MouseMove(TObject *Sender, TShiftState Shift, int X, int Y);
+	void __fastcall Label19MouseUp(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall SpeedButton7MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall SpeedButton8MouseDown(TObject *Sender, TMouseButton Button, TShiftState Shift,
+          int X, int Y);
+	void __fastcall SpeedButton24MouseEnter(TObject *Sender);
+	void __fastcall SpeedButton25MouseEnter(TObject *Sender);
+	void __fastcall Action93Execute(TObject *Sender);
+	void __fastcall Action94Execute(TObject *Sender);
+	void __fastcall Action96Execute(TObject *Sender);
+	void __fastcall Action97Execute(TObject *Sender);
+	void __fastcall Action98Execute(TObject *Sender);
+	void __fastcall Action99Execute(TObject *Sender);
+	void __fastcall SpeedButton22Click(TObject *Sender);
+	void __fastcall SpeedButton14Click(TObject *Sender);
+	void __fastcall Outline1Expand(TObject *Sender, int Index);
+	void __fastcall SpeedButton23Click(TObject *Sender);
+	void __fastcall SpeedButton20Click(TObject *Sender);
+	void __fastcall SpeedButton16Click(TObject *Sender);
+	void __fastcall SpeedButton4Click(TObject *Sender);
+	void __fastcall SpeedButton24Click(TObject *Sender);
+	void __fastcall Action101Execute(TObject *Sender);
+	void __fastcall Action102Execute(TObject *Sender);
+	void __fastcall Action103Execute(TObject *Sender);
+	void __fastcall PageControl4Change(TObject *Sender);
+	void __fastcall Action104Execute(TObject *Sender);
+	void __fastcall Action105Execute(TObject *Sender);
+	void __fastcall Action106Execute(TObject *Sender);
+	void __fastcall Action107Hint(UnicodeString &HintStr, bool &CanShow);
+	void __fastcall Action108Execute(TObject *Sender);
+	void __fastcall Action109Execute(TObject *Sender);
+	void __fastcall ListBox1Click(TObject *Sender);
+	void __fastcall SpeedButton8Click(TObject *Sender);
+	void __fastcall Exportarcomotexto1Click(TObject *Sender);
+	void __fastcall Action110Execute(TObject *Sender);
+	void __fastcall Action111Execute(TObject *Sender);
+	void __fastcall SpeedButton5Click(TObject *Sender);
+	void __fastcall FormCanResize(TObject *Sender, int &NewWidth, int &NewHeight, bool &Resize);
+	void __fastcall Exportaratxt1Click(TObject *Sender);
+	void __fastcall SpeedButton15Click(TObject *Sender);
+	void __fastcall SpeedButton6Click(TObject *Sender);
+	void __fastcall Guardarcomentario1Click(TObject *Sender);
+	void __fastcall Action112Execute(TObject *Sender);
+	void __fastcall Action114Execute(TObject *Sender);
+	void __fastcall Action115Execute(TObject *Sender);
+	void __fastcall Action116Execute(TObject *Sender);
+	void __fastcall Action117Execute(TObject *Sender);
+	void __fastcall Action118Execute(TObject *Sender);
+	void __fastcall Action119Execute(TObject *Sender);
+	void __fastcall Action120Execute(TObject *Sender);
+	void __fastcall Series1BeforeDrawValues(TObject *Sender);
+	void __fastcall Series1ClearValues(TChartSeries *Sender);
+	void __fastcall Action121Execute(TObject *Sender);
+	void __fastcall Hex1Click(TObject *Sender);
+	void __fastcall Mostrarendecimal1Click(TObject *Sender);
+	void __fastcall Action122Execute(TObject *Sender);
+	void __fastcall Action123Execute(TObject *Sender);
+	void __fastcall Timer1Timer(TObject *Sender);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+private:	// User declarations
+public:		// User declarations
+
+  int *V_BIN;
+  int Res_DAC;
+  double V_REF;
+  double OldX;
+  double OldY;
+  POINT pt;
+  bool press ;
+  int X1,Y2;
+  int ERROR1;
+  double OldXs;
+  double 	OldYs ;
+  int h;
+  double NewXs;
+  double NewYs;
+  int z;
+
+  SGN S1,S2;
+  String  Path,Path_Name;
+
+  String  Patht;
+  bool flatPaht,Clear ;
+
+ // double *Data1;
+  double Ndata1;
+  double X0,XN,Y0,YN;
+  double *A1,*A2,*A3,*A4,*A5,*A0;
+  double Z1,Z2,Z3,Z4,Z5,Z0;
+  double ECG_01[100000];
+  double FTP_01[100000];
+  bool fSave,fRecortar,fSaveOther;
+  int Desde,Hasta,desde,hasta;
+
+
+  //tarjeta de Sonido
+
+  int Frm_TSonido, N_Buffer;
+
+
+  //Variables de configuraci'on general
+   double Frm;// Periodo de muestreo
+   int FM;
+   int nFFT;
+   int Trefresco;
+   int Vent_Index;
+   double X01;
+   double Y01;
+   double Xn1;
+   double Yn1;
+
+
+   //Formato 212
+
+
+
+unsigned  char *buf_212;
+double *X_212;
+double *Y_212;
+
+int n_212;
+int i_212;
+char name_hea1[500];
+char name_dat[500];
+int canales,frec_m,n_muestras;
+int formato[2],int_por_mV[2],res_bit[2],value_zero_point[2], first_value_test[2];
+char s[500000];
+
+//----------------------------------------------------------------------
+
+  TColor CrossHairColor;
+  TPenStyle CrossHairStyle;
+  void DrawCross(int AX, int AY);
+  void __fastcall AjustaChart(double Y0,double YN,double X0,double XN);
+  void __fastcall Ini_G();
+  void __fastcall LoadSGN();
+  void __fastcall Cleaning();
+  void __fastcall SaveSGN();
+   void __fastcall SaveSGNT();
+   void __fastcall OpenSGNT() ;
+  void __fastcall Genera_Bin();
+  void __fastcall LoadPanel();
+  void __fastcall HidePanel();
+  void __fastcall FFT_L();
+  void __fastcall ERROR_FRM(int);
+  void __fastcall ExportarINF(char *A );
+  void __fastcall ExportarINF1(char *A );
+   void __fastcall fft(double *real, double *imag, int NPuntos);
+  __fastcall TForm1(TComponent* Owner);
+
+  TConcurent * Hebra1;
+
+
+
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm1 *Form1;
+
+//---------------------------------------------------------------------------
+#endif

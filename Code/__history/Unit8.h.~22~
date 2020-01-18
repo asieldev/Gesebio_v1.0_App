@@ -1,0 +1,64 @@
+//---------------------------------------------------------------------------
+
+#ifndef Unit8H
+#define Unit8H
+//---------------------------------------------------------------------------
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include <StdCtrls.hpp>
+#include <Forms.hpp>
+#include <Buttons.hpp>
+#include <ComCtrls.hpp>
+#include <ExtCtrls.hpp>
+#include <Graphics.hpp>
+#include <pngimage.hpp>
+//---------------------------------------------------------------------------
+class TForm8 : public TForm
+{
+__published:	// IDE-managed Components
+	TImage *Image1;
+	TPageControl *PageControl1;
+	TTabSheet *TabSheet3;
+	TGroupBox *GroupBox3;
+	TLabel *Label13;
+	TEdit *Edit5;
+	TGroupBox *GroupBox1;
+	TImage *Image2;
+	TTabSheet *TabSheet4;
+	TGroupBox *GroupBox5;
+	TLabel *Label6;
+	TLabel *Label7;
+	TLabel *Label8;
+	TEdit *Edit4;
+	TGroupBox *GroupBox6;
+	TImage *Image4;
+	TBitBtn *BitBtn3;
+	TEdit *Edit7;
+	TBitBtn *BitBtn2;
+	TLabel *Label1;
+	TEdit *Edit1;
+	TLabel *Label2;
+	TGroupBox *GroupBox2;
+	TMemo *Memo1;
+	TLabel *Label3;
+	TLabel *Label4;
+	TMemo *Memo2;
+	TImage *Image3;
+	TSpeedButton *SpeedButton1;
+	TLabel *Label12;
+	TBevel *Bevel1;
+	TImage *Image10;
+	TImage *Image11;
+	void __fastcall BitBtn2Click(TObject *Sender);
+	void __fastcall BitBtn3Click(TObject *Sender);
+	void __fastcall SpeedButton1Click(TObject *Sender);
+private:	// User declarations
+public:		// User declarations
+
+int u;
+	__fastcall TForm8(TComponent* Owner);
+};
+//---------------------------------------------------------------------------
+extern PACKAGE TForm8 *Form8;
+//---------------------------------------------------------------------------
+#endif
